@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agung Fazriansyah, M.Kom. | Portfolio</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans (Sangat modern & ramah untuk branding/PR) -->
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
     
@@ -22,10 +25,12 @@
                     },
                     colors: {
                         brand: {
-                            light: '#faf9f5',  /* Soft warm-white backdrop */
-                            dark: '#1e2530',   /* Deep charcoal profesional */
-                            accent: '#c97d60', /* Terracotta hangat untuk sentuhan Marcom/PR */
-                            muted: '#718096'
+                            white: '#FFFFFF',
+                            bgLight: '#F8FAFC',  /* Ultra clean off-white */
+                            black: '#0F172A',    /* Rich sharp black */
+                            blue: '#2563EB',     /* Electric Blue (Tech/Lecturer) */
+                            green: '#10B981',    /* Vibrant Green (Marcom/PR/Growth) */
+                            muted: '#64748B'
                         }
                     }
                 }
@@ -33,68 +38,68 @@
         }
     </script>
 </head>
-<body class="bg-brand-light text-brand-dark font-sans antialiased">
+<body class="bg-brand-bgLight text-brand-black font-sans antialiased selection:bg-brand-blue selection:text-white">
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-gradient-to-br from-[#faf9f5] via-[#f5ede0] to-[#edf2f7]">
-        <!-- Dekorasi Lingkaran Abstrak Lembut (Vibe Marcom Kreatif) -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-0 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+    <section class="relative min-h-[95vh] flex items-center pt-20 pb-16 overflow-hidden bg-white border-b-4 border-brand-black">
+        <!-- Dekorasi Gradasi Abstrak Biru-Hijau Lembut di Latar Belakang -->
+        <div class="absolute top-10 right-0 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-72 h-72 bg-brand-green/5 rounded-full blur-3xl -z-10"></div>
 
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <span class="inline-block bg-brand-accent/10 text-brand-accent border border-brand-accent/20 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
-                        ✨ Edukasi • Komunikasi • Teknologi
+                    <span class="inline-flex items-center gap-1.5 bg-brand-green text-brand-black border-2 border-brand-black px-4 py-2 rounded-full text-xs font-extrabold tracking-wider uppercase shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]">
+                        ⚡ Halo, Perkenalkan saya
                     </span>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-dark leading-tight">
-                        Agung Fazriansyah, <span class="text-brand-accent font-normal italic">M.Kom.</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-black leading-tight">
+                        Agung Fazriansyah, <span class="text-brand-blue font-normal italic">M.Kom.</span>
                     </h1>
-                    <p class="text-lg md:text-xl font-medium text-brand-muted/90">
+                    <p class="text-lg md:text-xl font-bold text-brand-green tracking-wide">
                         Lecturer • Public Relations • Digital & Marketing Communications
                     </p>
                     <p class="text-base md:text-lg text-brand-muted leading-relaxed max-w-xl mx-auto lg:mx-0">
-                        Kolaborasi dunia akademik, teknologi, *data mining*, *machine learning*, serta strategi komunikasi digital untuk menciptakan karya dan solusi yang berdampak bagi masyarakat.
+                        Kolaborasi dunia akademik, teknologi, data mining, machine learning, digital & marketing untuk menciptakan karya dan solusi yang berdampak.
                     </p>
-                    <div class="flex flex-wrap gap-4 justify-content-center lg:justify-start pt-2">
-                        <a href="https://scholar.google.com/citations?user=iWzIfyEAAAAJ&hl=id" target="_blank" class="w-full sm:w-auto px-6 py-3 text-center bg-brand-accent text-white font-semibold rounded-xl shadow-lg shadow-brand-accent/20 hover:bg-[#b36b4e] transition-all transform hover:-translate-y-0.5">
-                            <i class="bi bi-mortarboard-fill me-2"></i> Google Scholar
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                        <a href="https://scholar.google.com/citations?user=iWzIfyEAAAAJ&hl=id" target="_blank" class="w-full sm:w-auto px-6 py-3.5 text-center bg-brand-blue text-white font-bold rounded-2xl border-2 border-brand-black hover:bg-brand-blue/90 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                            <i class="bi bi-mortarboard-fill mr-2"></i> Google Scholar
                         </a>
-                        <a href="https://id.linkedin.com/in/agung-fazriansyah-1b0017119" target="_blank" class="w-full sm:w-auto px-6 py-3 text-center bg-white border border-gray-200 text-brand-dark font-semibold rounded-xl shadow-sm hover:bg-gray-50 transition-all transform hover:-translate-y-0.5">
-                            <i class="bi bi-linkedin me-2 text-blue-600"></i> LinkedIn
+                        <a href="https://id.linkedin.com/in/agung-fazriansyah-1b0017119" target="_blank" class="w-full sm:w-auto px-6 py-3.5 text-center bg-white border-2 border-brand-black text-brand-black font-bold rounded-2xl hover:bg-brand-bgLight transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(16,185,129,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                            <i class="bi bi-linkedin mr-2 text-brand-blue"></i> LinkedIn
                         </a>
                     </div>
                 </div>
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative group">
-                        <!-- Background Glow Effect -->
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-accent to-amber-500 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                        <img src="fzr.png" class="relative w-[340px] max-w-full rounded-[2rem] shadow-2xl object-cover bg-white" alt="Agung Fazriansyah">
+                        <!-- Pop Hard Shadow (Kombinasi Hijau & Hitam border) -->
+                        <div class="absolute inset-0 bg-brand-green rounded-[2.5rem] border-2 border-brand-black transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-all duration-300"></div>
+                        <img src="fzr.png" class="w-[340px] max-w-full rounded-[2.5rem] border-2 border-brand-black object-cover bg-white p-2" alt="Agung Fazriansyah">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- STATISTICS CARD SECTION -->
+    <!-- STATS SECTION -->
     <section class="relative z-10 -mt-10 px-6">
         <div class="container mx-auto max-w-5xl">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-100">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white border-2 border-brand-black p-6 rounded-3xl shadow-[6px_6px_0px_0px_rgba(15,23,42,1)]">
                 <div class="text-center p-2">
-                    <div class="text-3xl font-extrabold text-brand-accent">20+</div>
-                    <div class="text-xs md:text-sm font-medium text-brand-muted mt-1">Publikasi</div>
+                    <div class="text-3xl md:text-4xl font-extrabold text-brand-blue">20+</div>
+                    <div class="text-xs md:text-sm font-bold text-brand-black mt-1 uppercase tracking-wider">Publikasi</div>
                 </div>
-                <div class="text-center p-2 border-l border-gray-100">
-                    <div class="text-3xl font-extrabold text-brand-dark">5+</div>
-                    <div class="text-xs md:text-sm font-medium text-brand-muted mt-1">Tahun Mengajar</div>
+                <div class="text-center p-2 border-l-2 border-brand-black/10">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brand-green">5+</div>
+                    <div class="text-xs md:text-sm font-bold text-brand-muted mt-1 uppercase tracking-wider">Tahun Mengajar</div>
                 </div>
-                <div class="text-center p-2 border-l border-gray-100">
-                    <div class="text-3xl font-extrabold text-brand-dark">1000+</div>
-                    <div class="text-xs md:text-sm font-medium text-brand-muted mt-1">Mahasiswa</div>
+                <div class="text-center p-2 border-l-2 border-brand-black/10">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brand-black">1000+</div>
+                    <div class="text-xs md:text-sm font-bold text-brand-muted mt-1 uppercase tracking-wider">Mahasiswa</div>
                 </div>
-                <div class="text-center p-2 border-l border-gray-100">
-                    <div class="text-3xl font-extrabold text-brand-dark">10+</div>
-                    <div class="text-xs md:text-sm font-medium text-brand-muted mt-1">Project Digital</div>
+                <div class="text-center p-2 border-l-2 border-brand-black/10">
+                    <div class="text-3xl md:text-4xl font-extrabold text-brand-blue">10+</div>
+                    <div class="text-xs md:text-sm font-bold text-brand-muted mt-1 uppercase tracking-wider">Project Digital</div>
                 </div>
             </div>
         </div>
@@ -103,44 +108,43 @@
     <!-- ABOUT ME SECTION -->
     <section id="about" class="py-24 px-6">
         <div class="container mx-auto max-w-5xl">
-            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12 relative inline-block left-1/2 transform -translate-x-1/2">
-                About Me
-                <span class="block w-10 h-1 bg-brand-accent mx-auto mt-2 rounded"></span>
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-brand-black inline-block relative">
+                    About Me
+                    <span class="block w-12 h-1 bg-brand-green mx-auto mt-2 rounded"></span>
+                </h2>
+            </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <!-- Profil Card -->
-                <div class="lg:col-span-7 bg-white p-8 rounded-2xl shadow-sm border border-gray-50 hover:shadow-md transition-all">
+                <div class="lg:col-span-7 bg-white p-8 rounded-3xl border-2 border-brand-black shadow-[4px_4px_0px_0px_rgba(37,99,235,1)]">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="p-2 bg-brand-accent/10 rounded-lg text-brand-accent"><i class="bi bi-person-workspace text-xl"></i></span>
-                        <h4 class="text-xl font-bold text-brand-dark">Profil Profesional</h4>
+                        <span class="p-2.5 bg-brand-blue/10 rounded-xl text-brand-blue border border-brand-blue/20"><i class="bi bi-person-badge-fill text-xl"></i></span>
+                        <h4 class="text-xl font-bold text-brand-black">Profil Profesional</h4>
                     </div>
-                    <p class="text-brand-muted leading-relaxed text-sm md:text-base">
-                        Saat ini aktif sebagai Dosen Program Studi Sistem Informasi Universitas Bina Sarana Informatika, sekaligus menjalankan peran strategis dalam aktivitas <strong>Public Relations</strong> dan <strong>Marketing Communication Area</strong> untuk membangun citra institusi, meningkatkan *engagement* masyarakat, serta mendukung pencapaian target penerimaan mahasiswa baru.
-                    </p>
-                    <p class="text-brand-muted leading-relaxed mt-4 text-sm md:text-base">
-                        Fokus keahlian meliputi Digital & Marketing Strategy, Branding, Event Management, Public Relations, Data Mining, dan Pengembangan Sistem Informasi berbasis teknologi digital.
-                    </p>
+                    <p class="text-brand-muted leading-relaxed text-sm md:text-base whitespace-pre-line">Saat ini aktif sebagai Dosen Program Studi Sistem Informasi Universitas Bina Sarana Informatika, sekaligus menjalankan peran strategis dalam aktivitas Public Relations dan Marketing Communication Area untuk membangun citra institusi, meningkatkan engagement masyarakat, serta mendukung pencapaian target penerimaan mahasiswa baru.
+
+                    Fokus keahlian meliputi Digital & Marketing Strategy, Branding, Event Management, Public Relations, Data Mining, dan Pengembangan Sistem Informasi berbasis teknologi digital.</p>
                 </div>
                 <!-- Pendidikan Card -->
-                <div class="lg:col-span-5 bg-white p-8 rounded-2xl shadow-sm border border-gray-50 hover:shadow-md transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="p-2 bg-brand-accent/10 rounded-lg text-brand-accent"><i class="bi bi-mortarboard text-xl"></i></span>
-                        <h4 class="text-xl font-bold text-brand-dark">Pendidikan</h4>
+                <div class="lg:col-span-5 bg-white p-8 rounded-3xl border-2 border-brand-black shadow-[4px_4px_0px_0px_rgba(16,185,129,1)]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="p-2.5 bg-brand-green/10 rounded-xl text-brand-green border border-brand-green/20"><i class="bi bi-mortarboard-fill text-xl"></i></span>
+                        <h4 class="text-xl font-bold text-brand-black">Pendidikan</h4>
                     </div>
-                    <ul class="space-y-4 relative border-l border-gray-100 pl-4 ml-2">
+                    <ul class="space-y-4 relative border-l-2 border-brand-black/20 pl-4 ml-2">
                         <li class="relative">
-                            <span class="absolute -left-[21px] top-1.5 w-3 h-3 bg-brand-accent rounded-full"></span>
-                            <div class="text-sm font-bold text-brand-dark">S2 Ilmu Komputer</div>
+                            <span class="absolute -left-[23px] top-1 w-3 h-3 bg-brand-blue rounded-full ring-4 ring-brand-blue/20"></span>
+                            <div class="text-sm font-bold text-brand-black">S2 Ilmu Komputer</div>
                             <div class="text-xs text-brand-muted">Universitas Nusa Mandiri</div>
                         </li>
                         <li class="relative">
-                            <span class="absolute -left-[21px] top-1.5 w-3 h-3 bg-gray-300 rounded-full"></span>
-                            <div class="text-sm font-bold text-brand-dark">S1 Sistem Informasi</div>
+                            <span class="absolute -left-[23px] top-1 w-3 h-3 bg-brand-green rounded-full"></span>
+                            <div class="text-sm font-bold text-brand-black">S1 Sistem Informasi</div>
                             <div class="text-xs text-brand-muted">Universitas Nusa Mandiri</div>
                         </li>
                         <li class="relative">
-                            <span class="absolute -left-[21px] top-1.5 w-3 h-3 bg-gray-300 rounded-full"></span>
-                            <div class="text-sm font-bold text-brand-dark">D3 Manajemen Informatika</div>
+                            <span class="absolute -left-[23px] top-1 w-3 h-3 bg-brand-black rounded-full"></span>
+                            <div class="text-sm font-bold text-brand-black">D3 Manajemen Informatika</div>
                             <div class="text-xs text-brand-muted">Bina Sarana Informatika</div>
                         </li>
                     </ul>
@@ -150,28 +154,30 @@
     </section>
 
     <!-- RESEARCH INTEREST -->
-    <section id="research" class="py-20 bg-gray-50 px-6 border-y border-gray-100">
+    <section id="research" class="py-24 bg-white border-y-4 border-brand-black px-6">
         <div class="container mx-auto max-w-5xl">
-            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12 relative inline-block left-1/2 transform -translate-x-1/2">
-                Research Interest
-                <span class="block w-10 h-1 bg-brand-accent mx-auto mt-2 rounded"></span>
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-brand-black inline-block relative">
+                    Research Interest
+                    <span class="block w-12 h-1 bg-brand-blue mx-auto mt-2 rounded"></span>
+                </h2>
+            </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-brand-accent/30 hover:shadow-md transition-all">
-                    <div class="text-3xl mb-2">🤖</div>
-                    <h5 class="font-bold text-brand-dark text-sm md:text-base">Artificial Intelligence</h5>
+                <div class="bg-brand-bgLight p-6 rounded-2xl border-2 border-brand-black text-center hover:bg-brand-blue/5 hover:-translate-y-1 transition-all duration-200">
+                    <div class="text-4xl mb-3">🤖</div>
+                    <h5 class="font-bold text-brand-black text-sm md:text-base">Artificial Intelligence</h5>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-brand-accent/30 hover:shadow-md transition-all">
-                    <div class="text-3xl mb-2">📊</div>
-                    <h5 class="font-bold text-brand-dark text-sm md:text-base">Data Mining</h5>
+                <div class="bg-brand-bgLight p-6 rounded-2xl border-2 border-brand-black text-center hover:bg-brand-green/5 hover:-translate-y-1 transition-all duration-200">
+                    <div class="text-4xl mb-3">📊</div>
+                    <h5 class="font-bold text-brand-black text-sm md:text-base">Data Mining</h5>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-brand-accent/30 hover:shadow-md transition-all">
-                    <div class="text-3xl mb-2">🧠</div>
-                    <h5 class="font-bold text-brand-dark text-sm md:text-base">Machine Learning</h5>
+                <div class="bg-brand-bgLight p-6 rounded-2xl border-2 border-brand-black text-center hover:bg-brand-blue/5 hover:-translate-y-1 transition-all duration-200">
+                    <div class="text-4xl mb-3">🧠</div>
+                    <h5 class="font-bold text-brand-black text-sm md:text-base">Machine Learning</h5>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-brand-accent/30 hover:shadow-md transition-all">
-                    <div class="text-3xl mb-2">📈</div>
-                    <h5 class="font-bold text-brand-dark text-sm md:text-base">Digital Marketing</h5>
+                <div class="bg-brand-bgLight p-6 rounded-2xl border-2 border-brand-black text-center hover:bg-brand-green/5 hover:-translate-y-1 transition-all duration-200">
+                    <div class="text-4xl mb-3">📈</div>
+                    <h5 class="font-bold text-brand-black text-sm md:text-base">Digital Marketing</h5>
                 </div>
             </div>
         </div>
@@ -179,75 +185,77 @@
 
     <!-- SKILLS SECTION -->
     <section id="skills" class="py-24 px-6">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl font-bold text-center text-brand-dark mb-12 relative inline-block left-1/2 transform -translate-x-1/2">
-                Skills & Expertise
-                <span class="block w-10 h-1 bg-brand-accent mx-auto mt-2 rounded"></span>
-            </h2>
+        <div class="container mx-auto max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold tracking-tight text-brand-black inline-block relative">
+                    Skills
+                    <span class="block w-12 h-1 bg-brand-green mx-auto mt-2 rounded"></span>
+                </h2>
+            </div>
             
-            <div class="space-y-6 bg-white p-8 rounded-2xl shadow-sm border border-gray-50">
+            <div class="space-y-6 bg-white p-8 rounded-3xl border-2 border-brand-black shadow-[4px_4px_0px_0px_rgba(15,23,42,1)]">
                 <!-- Skill 1 -->
                 <div>
-                    <div class="flex justify-between text-sm font-semibold text-brand-dark mb-2">
+                    <div class="flex justify-between text-sm font-bold text-brand-black mb-2">
                         <span>Web Development</span>
-                        <span>88%</span>
+                        <span class="bg-brand-blue/10 text-brand-blue border border-brand-blue/20 px-2.5 py-0.5 rounded-full text-xs font-extrabold">88%</span>
                     </div>
-                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-blue-600 h-full rounded-full" style="width: 88%"></div>
+                    <div class="w-full bg-brand-bgLight h-4 rounded-full border-2 border-brand-black overflow-hidden p-0.5">
+                        <div class="bg-brand-blue h-full rounded-full" style="width: 88%"></div>
                     </div>
                 </div>
 
                 <!-- Skill 2 -->
                 <div>
-                    <div class="flex justify-between text-sm font-semibold text-brand-dark mb-2">
+                    <div class="flex justify-between text-sm font-bold text-brand-black mb-2">
                         <span>AI & Machine Learning</span>
-                        <span>95%</span>
+                        <span class="bg-brand-green/10 text-brand-green border border-brand-green/20 px-2.5 py-0.5 rounded-full text-xs font-extrabold">95%</span>
                     </div>
-                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-purple-600 h-full rounded-full" style="width: 95%"></div>
+                    <div class="w-full bg-brand-bgLight h-4 rounded-full border-2 border-brand-black overflow-hidden p-0.5">
+                        <div class="bg-brand-green h-full rounded-full" style="width: 95%"></div>
                     </div>
                 </div>
 
                 <!-- Skill 3 -->
                 <div>
-                    <div class="flex justify-between text-sm font-semibold text-brand-dark mb-2">
+                    <div class="flex justify-between text-sm font-bold text-brand-black mb-2">
                         <span>Digital & Marketing Strategy</span>
-                        <span>95%</span>
+                        <span class="bg-brand-blue/10 text-brand-blue border border-brand-blue/20 px-2.5 py-0.5 rounded-full text-xs font-extrabold">95%</span>
                     </div>
-                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-brand-accent h-full rounded-full" style="width: 95%"></div>
+                    <div class="w-full bg-brand-bgLight h-4 rounded-full border-2 border-brand-black overflow-hidden p-0.5">
+                        <div class="bg-brand-blue h-full rounded-full" style="width: 95%"></div>
                     </div>
                 </div>
 
                 <!-- Skill 4 -->
                 <div>
-                    <div class="flex justify-between text-sm font-semibold text-brand-dark mb-2">
+                    <div class="flex justify-between text-sm font-bold text-brand-black mb-2">
                         <span>Public Relations</span>
-                        <span>90%</span>
+                        <span class="bg-brand-green/10 text-brand-green border border-brand-green/20 px-2.5 py-0.5 rounded-full text-xs font-extrabold">90%</span>
                     </div>
-                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-amber-500 h-full rounded-full" style="width: 90%"></div>
+                    <div class="w-full bg-brand-bgLight h-4 rounded-full border-2 border-brand-black overflow-hidden p-0.5">
+                        <div class="bg-brand-green h-full rounded-full" style="width: 90%"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONNECT SECTION -->
-    <section class="py-16 bg-gray-50 border-y border-gray-100 px-6">
+    <!-- CONNECT WITH ME -->
+    <section class="py-16 bg-white border-y-4 border-brand-black px-6">
         <div class="container mx-auto text-center max-w-2xl">
-            <h3 class="text-2xl font-bold text-brand-dark mb-6">Jejaring Sosial & Publikasi</h3>
-            <div class="flex justify-center gap-6">
-                <a href="https://github.com/MasAgung15" target="_blank" class="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-white border border-gray-200 text-brand-dark text-xl shadow-sm hover:text-brand-accent hover:border-brand-accent/40 transition-all transform hover:-translate-y-1">
+            <h2 class="text-2xl font-extrabold text-brand-black mb-8">Connect With Me</h2>
+            <div class="flex justify-center flex-wrap gap-4">
+                <a href="https://github.com/MasAgung15" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border-2 border-brand-black text-2xl text-brand-black hover:bg-brand-black hover:text-white transition-all duration-200 shadow-[3px_3px_0px_0px_rgba(37,99,235,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5">
                     <i class="bi bi-github"></i>
                 </a>
-                <a href="https://instagram.com/agung.growth" target="_blank" class="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-white border border-gray-200 text-brand-dark text-xl shadow-sm hover:text-pink-600 hover:border-pink-300 transition-all transform hover:-translate-y-1">
+                <a href="https://instagram.com/agung.growth" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border-2 border-brand-black text-2xl text-brand-black hover:bg-brand-green hover:text-brand-black hover:border-brand-black transition-all duration-200 shadow-[3px_3px_0px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5">
                     <i class="bi bi-instagram"></i>
                 </a>
-                <a href="https://id.linkedin.com/in/agung-fazriansyah-1b0017119" target="_blank" class="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-white border border-gray-200 text-brand-dark text-xl shadow-sm hover:text-blue-600 hover:border-blue-300 transition-all transform hover:-translate-y-1">
+                <a href="https://id.linkedin.com/in/agung-fazriansyah-1b0017119" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border-2 border-brand-black text-2xl text-brand-black hover:bg-brand-blue hover:text-white hover:border-brand-black transition-all duration-200 shadow-[3px_3px_0px_0px_rgba(16,185,129,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5">
                     <i class="bi bi-linkedin"></i>
                 </a>
-                <a href="https://scholar.google.com/citations?user=iWzIfyEAAAAJ&hl=id" target="_blank" class="w-12 h-12 inline-flex items-center justify-center rounded-xl bg-white border border-gray-200 text-brand-dark text-xl shadow-sm hover:text-amber-600 hover:border-amber-300 transition-all transform hover:-translate-y-1">
+                <a href="https://scholar.google.com/citations?user=iWzIfyEAAAAJ&hl=id" target="_blank" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border-2 border-brand-black text-2xl text-brand-black hover:bg-brand-black hover:text-white transition-all duration-200 shadow-[3px_3px_0px_0px_rgba(16,185,129,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5">
                     <i class="bi bi-mortarboard-fill"></i>
                 </a>
             </div>
@@ -255,34 +263,28 @@
     </section>
 
     <!-- CONTACT / COLLABORATION SECTION -->
-    <section id="contact" class="py-24 px-6 bg-white">
+    <section id="contact" class="py-24 px-6 bg-brand-bgLight">
         <div class="container mx-auto max-w-xl text-center space-y-6">
-            <span class="inline-block bg-brand-accent/10 text-brand-accent border border-brand-accent/20 px-4 py-1 rounded-full text-xs font-semibold">
-                📩 Hubungi Saya
-            </span>
-            <h2 class="text-3xl font-extrabold text-brand-dark">Let's Collaborate</h2>
-            <p class="text-brand-muted text-base">
-                Terbuka untuk kolaborasi riset bersama, pembicara seminar, pelatihan korporat, maupun pengerjaan proyek transformasi digital terintegrasi.
+            <h2 class="text-3xl font-extrabold text-brand-black tracking-tight">Let's Collaborate</h2>
+            <p class="text-brand-muted text-base max-w-md mx-auto">
+                Kolaborasi riset, seminar, pelatihan, dan project digital.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <a href="mailto:agung.fzr@bsi.ac.id" class="px-8 py-3 bg-brand-dark text-white font-semibold rounded-xl shadow-md hover:bg-gray-800 transition-all">
-                    <i class="bi bi-envelope me-2"></i> Kirim Email
+                <a href="mailto:agung.fzr@bsi.ac.id" class="px-8 py-3.5 bg-brand-blue text-white font-bold rounded-2xl border-2 border-brand-black transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                    <i class="bi bi-envelope-fill mr-2"></i> Email
                 </a>
-                <a href="https://wa.me/6289502072043" target="_blank" class="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-xl shadow-md hover:bg-emerald-700 transition-all">
-                    <i class="bi bi-whatsapp me-2"></i> WhatsApp Chat
+                <a href="https://wa.me/6289502072043" target="_blank" class="px-8 py-3.5 bg-brand-green text-brand-black font-bold rounded-2xl border-2 border-brand-black transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                    <i class="bi bi-whatsapp mr-2"></i> WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white py-12 px-6">
-        <div class="container mx-auto max-w-5xl text-center space-y-3">
-            <h4 class="text-xl font-bold tracking-tight">Agung Fazriansyah, M.Kom.</h4>
-            <p class="text-sm text-gray-400">Lecturer • Researcher • Digital & Marketing Communications</p>
-            <div class="pt-4 text-xs text-gray-500 border-t border-gray-800/60 max-w-xs mx-auto">
-                &copy; 2026. All rights reserved.
-            </div>
+    <footer class="bg-brand-black text-white py-12 px-6">
+        <div class="container mx-auto max-w-5xl text-center space-y-2">
+            <h4 class="text-xl font-bold tracking-tight text-white">Agung Fazriansyah, M.Kom.</h4>
+            <p class="text-sm text-brand-muted font-medium">Lecturer • Researcher • Digital & Marketing Communications</p>
         </div>
     </footer>
 
