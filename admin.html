@@ -92,8 +92,27 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-content">Konten Artikel</label>
-                        <textarea id="post-content" required rows="6" class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium whitespace-pre-wrap" placeholder="Tuliskan isi artikel secara lengkap disini..."></textarea>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5">Konten Artikel</label>
+                        
+                        <div class="bg-natural-clay border border-natural-base/10 rounded-t-xl p-2 flex flex-wrap gap-1 items-center border-b-0 select-none">
+                            <button type="button" onclick="formatDoc('bold')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Tebal (Bold)"><i class="bi bi-type-bold font-bold"></i></button>
+                            <button type="button" onclick="formatDoc('italic')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Miring (Italic)"><i class="bi bi-type-italic"></i></button>
+                            <button type="button" onclick="formatDoc('underline')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Garis Bawah (Underline)"><i class="bi bi-type-underline"></i></button>
+                            
+                            <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
+                            
+                            <button type="button" onclick="formatDoc('justifyLeft')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri"><i class="bi bi-text-left"></i></button>
+                            <button type="button" onclick="formatDoc('justifyCenter')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Tengah"><i class="bi bi-text-center"></i></button>
+                            <button type="button" onclick="formatDoc('justifyRight')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kanan"><i class="bi bi-text-right"></i></button>
+                            <button type="button" onclick="formatDoc('justifyFull')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri Kanan (Justify)"><i class="bi bi-justify"></i></button>
+                            
+                            <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
+
+                            <button type="button" onclick="formatDoc('insertUnorderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Poin (Bullet List)"><i class="bi bi-list-ul"></i></button>
+                            <button type="button" onclick="formatDoc('insertOrderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Angka (Numbered List)"><i class="bi bi-list-ol"></i></button>
+                        </div>
+
+                        <div id="post-editor" contenteditable="true" class="w-full bg-white border border-natural-base/10 rounded-b-xl px-4 py-3 text-sm focus:outline-none focus:border-natural-blue font-medium min-h-[220px] max-h-[400px] overflow-y-auto prose prose-sm focus:ring-0" placeholder="Tuliskan isi artikel secara lengkap disini..."></div>
                     </div>
 
                     <div class="flex gap-2 pt-2">
@@ -121,7 +140,6 @@
     </main>
 
     <script>
-        // Data Dummy Awal jika LocalStorage masih kosong murni
         const defaultPosts = [
             {
                 id: 1,
@@ -141,7 +159,6 @@
             }
         ];
 
-        // Memastikan inisialisasi basis data awal
         if (!localStorage.getItem('agung_blog_posts')) {
             localStorage.setItem('agung_blog_posts', JSON.stringify(defaultPosts));
         }
@@ -152,9 +169,10 @@
         const postTitleInput = document.getElementById('post-title');
         const postCategoryInput = document.getElementById('post-category');
         const postDateInput = document.getElementById('post-date');
-        const postContentInput = document.getElementById('post-content');
         
-        // DOM Elements untuk Upload Gambar
+        // Target Elemen Editor teks terbaru
+        const postEditor = document.getElementById('post-editor');
+        
         const postImageFileInput = document.getElementById('post-image-file');
         const uploadLabel = document.getElementById('upload-label');
         const imagePreviewContainer = document.getElementById('image-preview-container');
@@ -166,20 +184,23 @@
         const cancelBtn = document.getElementById('cancel-btn');
         const adminBlogList = document.getElementById('admin-blog-list');
 
-        // Variabel penampung string Base64 gambar
         let currentImageBase64 = "";
 
-        // Logika membaca file gambar dan mengubahnya ke Base64 DataURL
+        // Fungsi API Pengendali Format Teks Editor (Blogger Style)
+        function formatDoc(cmd, value = null) {
+            document.execCommand(cmd, false, value);
+            postEditor.focus(); // Jaga agar kursor tetap aktif di dalam teks editor
+        }
+
+        // Logika membaca berkas gambar
         postImageFileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
-                // Validasi ukuran (opsional, disarankan di bawah 2MB karena limitasi localStorage)
                 if (file.size > 2 * 1024 * 1024) {
                     alert("Ukuran file terlalu besar! Maksimal adalah 2MB agar pas di memori lokal browser.");
                     this.value = "";
                     return;
                 }
-
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     currentImageBase64 = event.target.result;
@@ -189,14 +210,12 @@
             }
         });
 
-        // Menampilkan kotak pratinjau gambar
         function showImagePreview(src, filename) {
             imagePreview.src = src;
             uploadLabel.innerText = filename ? filename : "Gambar Terpilih";
             imagePreviewContainer.classList.remove('hidden');
         }
 
-        // Aksi tombol Hapus Gambar
         removeImageBtn.addEventListener('click', function() {
             currentImageBase64 = "";
             postImageFileInput.value = "";
@@ -205,7 +224,7 @@
             imagePreview.src = "";
         });
 
-        // Merender seluruh artikel di panel admin
+        // Merender list artikel
         function renderAdminList() {
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
             adminBlogList.innerHTML = "";
@@ -215,7 +234,6 @@
                 return;
             }
 
-            // Tampilkan artikel dari yang paling baru di urutan teratas
             [...posts].reverse().forEach(post => {
                 const cover = post.image ? post.image : 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500';
                 const div = document.createElement('div');
@@ -242,32 +260,36 @@
         blogForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Validasi teks editor agar tidak kosong kosong amat
+            if(postEditor.innerHTML.trim() === "" || postEditor.innerHTML === "<br>") {
+                alert("Konten artikel tidak boleh kosong!");
+                return;
+            }
+
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
             const id = postIdInput.value;
 
             if (id) {
-                // Aksi Edit Artikel yang Ada
                 const index = posts.findIndex(p => p.id == id);
                 if (index !== -1) {
                     posts[index].title = postTitleInput.value;
                     posts[index].category = postCategoryInput.value;
                     posts[index].date = postDateInput.value;
-                    posts[index].content = postContentInput.value;
+                    // Simpan markup HTML hasil format editor
+                    posts[index].content = postEditor.innerHTML;
                     
-                    // Jika mengunggah gambar baru, timpa gambar lama
                     if (currentImageBase64) {
                         posts[index].image = currentImageBase64;
                     }
                 }
             } else {
-                // Aksi Tambah Artikel Baru
                 const newPost = {
-                    id: Date.now(), // Unique ID dengan timestamp
+                    id: Date.now(),
                     title: postTitleInput.value,
                     category: postCategoryInput.value,
                     date: postDateInput.value,
-                    content: postContentInput.value,
-                    image: currentImageBase64 || "" // Kosong jika tidak ada unggahan gambar
+                    content: postEditor.innerHTML, // Simpan rich text markup HTML
+                    image: currentImageBase64 || ""
                 };
                 posts.push(newPost);
             }
@@ -275,8 +297,6 @@
             localStorage.setItem('agung_blog_posts', JSON.stringify(posts));
             resetForm();
             renderAdminList();
-            
-            // Trigger perubahan instan ke file index.html jika sedang dibuka bersebelahan
             window.dispatchEvent(new Event('storage'));
         });
 
@@ -291,12 +311,12 @@
                 postTitleInput.value = post.title;
                 postCategoryInput.value = post.category;
                 postDateInput.value = post.date;
-                postContentInput.value = post.content;
+                
+                // Masukkan teks ber-HTML ke editor teks
+                postEditor.innerHTML = post.content;
 
-                // Tampilkan preview gambar lama jika ada
                 if (post.image) {
                     currentImageBase64 = post.image;
-                    // Jika isinya berupa data URL Base64
                     if (post.image.startsWith('data:')) {
                         showImagePreview(post.image, "Gambar Tersimpan (Base64)");
                     } else {
@@ -310,13 +330,10 @@
 
                 submitBtn.innerHTML = `<i class="bi bi-save mr-1"></i> Perbarui Artikel`;
                 cancelBtn.classList.remove('hidden');
-                
-                // Scroll halus ke arah form agar user langsung fokus
                 blogForm.scrollIntoView({ behavior: 'smooth' });
             }
         };
 
-        // Hapus Artikel
         window.deletePost = function(id) {
             if (confirm("Apakah Anda yakin ingin menghapus artikel ini?")) {
                 let posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
@@ -326,19 +343,19 @@
                 if (postIdInput.value == id) {
                     resetForm();
                 }
-                
                 renderAdminList();
                 window.dispatchEvent(new Event('storage'));
             }
         };
 
-        // Reset Formulir Kembali ke Awal
         function resetForm() {
             formTitle.innerText = "Buat Artikel Baru";
             postIdInput.value = "";
             blogForm.reset();
             
-            // Bersihkan upload/preview gambar
+            // Bersihkan teks editor
+            postEditor.innerHTML = "";
+            
             currentImageBase64 = "";
             imagePreviewContainer.classList.add('hidden');
             imagePreview.src = "";
@@ -349,8 +366,6 @@
         }
 
         cancelBtn.addEventListener('click', resetForm);
-
-        // Render perdana saat halaman dimuat
         window.onload = renderAdminList;
     </script>
 </body>
