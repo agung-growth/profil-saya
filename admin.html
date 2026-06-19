@@ -51,88 +51,111 @@
     <main class="container mx-auto max-w-6xl px-6 py-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <section class="lg:col-span-5 bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-6">
-                <div>
-                    <h2 id="form-title" class="text-xl font-extrabold text-natural-base">Buat Artikel Baru</h2>
-                    <p class="text-xs text-natural-muted mt-1">Isi formulir di bawah untuk mempublikasikan tulisan baru.</p>
-                </div>
-
-                <form id="blog-form" class="space-y-4">
-                    <input type="hidden" id="post-id">
-
+            <div class="lg:col-span-6 space-y-8">
+                
+                <section class="bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-6">
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-title">Judul Artikel</label>
-                        <input type="text" id="post-title" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium" placeholder="Masukkan judul menarik...">
+                        <h2 id="form-title" class="text-xl font-extrabold text-natural-base">Buat Artikel Baru</h2>
+                        <p class="text-xs text-natural-muted mt-1">Isi formulir di bawah untuk mempublikasikan tulisan baru.</p>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
+                    <form id="blog-form" class="space-y-4">
+                        <input type="hidden" id="post-id">
+
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-category">Kategori</label>
-                            <input type="text" id="post-category" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium" placeholder="Contoh: AI, PR, Marketing">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-title">Judul Artikel</label>
+                            <input type="text" id="post-title" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium" placeholder="Masukkan judul menarik...">
                         </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-category">Kategori</label>
+                                <input type="text" id="post-category" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium" placeholder="Contoh: AI, PR, Marketing">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-date">Tanggal</label>
+                                <input type="date" id="post-date" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium cursor-pointer">
+                            </div>
+                        </div>
+
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5" for="post-date">Tanggal</label>
-                            <input type="text" id="post-date" required class="w-full bg-natural-clay/40 border border-natural-base/10 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-natural-blue font-medium" placeholder="Contoh: 19 Juni 2026">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5">Gambar Cover Artikel</label>
+                            <div class="flex items-center gap-4">
+                                <label class="flex flex-col items-center justify-center border-2 border-dashed border-natural-base/20 rounded-xl p-4 bg-natural-clay/10 cursor-pointer hover:bg-natural-clay/30 hover:border-natural-blue transition-all group w-full text-center">
+                                    <i class="bi bi-image text-2xl text-natural-muted group-hover:text-natural-blue"></i>
+                                    <span class="text-xs font-bold text-natural-muted group-hover:text-natural-blue mt-1" id="upload-label">Pilih File Gambar</span>
+                                    <input type="file" id="post-image-file" accept="image/*" class="hidden">
+                                </label>
+                            </div>
+                            <div id="image-preview-container" class="mt-3 hidden bg-natural-clay/30 border border-natural-base/10 rounded-xl p-2 flex items-center justify-between">
+                                <img id="image-preview" src="" class="h-14 w-24 object-cover rounded-lg border border-natural-base/10 bg-white">
+                                <button type="button" id="remove-image-btn" class="text-red-500 hover:text-red-700 text-sm font-bold mr-2">Hapus</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5">Gambar Cover Artikel</label>
-                        <div class="flex items-center gap-4">
-                            <label class="flex flex-col items-center justify-center border-2 border-dashed border-natural-base/20 rounded-xl p-4 bg-natural-clay/10 cursor-pointer hover:bg-natural-clay/30 hover:border-natural-blue transition-all group w-full text-center">
-                                <i class="bi bi-image text-2xl text-natural-muted group-hover:text-natural-blue"></i>
-                                <span class="text-xs font-bold text-natural-muted group-hover:text-natural-blue mt-1" id="upload-label">Pilih File Gambar</span>
-                                <input type="file" id="post-image-file" accept="image/*" class="hidden">
-                            </label>
-                        </div>
-                        <div id="image-preview-container" class="mt-3 hidden bg-natural-clay/30 border border-natural-base/10 rounded-xl p-2 flex items-center justify-between">
-                            <img id="image-preview" src="" class="h-14 w-24 object-cover rounded-lg border border-natural-base/10 bg-white">
-                            <button type="button" id="remove-image-btn" class="text-red-500 hover:text-red-700 text-sm font-bold mr-2">Hapus</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5">Konten Artikel</label>
-                        
-                        <div class="bg-natural-clay border border-natural-base/10 rounded-t-xl p-2 flex flex-wrap gap-1 items-center border-b-0 select-none">
-                            <button type="button" onclick="formatDoc('bold')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Tebal (Bold)"><i class="bi bi-type-bold font-bold"></i></button>
-                            <button type="button" onclick="formatDoc('italic')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Miring (Italic)"><i class="bi bi-type-italic"></i></button>
-                            <button type="button" onclick="formatDoc('underline')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Garis Bawah (Underline)"><i class="bi bi-type-underline"></i></button>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1.5">Konten Artikel</label>
                             
-                            <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
-                            
-                            <button type="button" onclick="formatDoc('justifyLeft')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri"><i class="bi bi-text-left"></i></button>
-                            <button type="button" onclick="formatDoc('justifyCenter')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Tengah"><i class="bi bi-text-center"></i></button>
-                            <button type="button" onclick="formatDoc('justifyRight')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kanan"><i class="bi bi-text-right"></i></button>
-                            <button type="button" onclick="formatDoc('justifyFull')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri Kanan (Justify)"><i class="bi bi-justify"></i></button>
-                            
-                            <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
+                            <div class="bg-natural-clay border border-natural-base/10 rounded-t-xl p-2 flex flex-wrap gap-1 items-center border-b-0 select-none">
+                                <button type="button" onclick="formatDoc('bold')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Tebal (Bold)"><i class="bi bi-type-bold font-bold"></i></button>
+                                <button type="button" onclick="formatDoc('italic')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Miring (Italic)"><i class="bi bi-type-italic"></i></button>
+                                <button type="button" onclick="formatDoc('underline')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Garis Bawah (Underline)"><i class="bi bi-type-underline"></i></button>
+                                
+                                <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
+                                
+                                <button type="button" onclick="formatDoc('justifyLeft')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri"><i class="bi bi-text-left"></i></button>
+                                <button type="button" onclick="formatDoc('justifyCenter')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Tengah"><i class="bi bi-text-center"></i></button>
+                                <button type="button" onclick="formatDoc('justifyRight')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kanan"><i class="bi bi-text-right"></i></button>
+                                <button type="button" onclick="formatDoc('justifyFull')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Rata Kiri Kanan (Justify)"><i class="bi bi-justify"></i></button>
+                                
+                                <div class="w-[1px] h-5 bg-natural-base/20 mx-1"></div>
 
-                            <button type="button" onclick="formatDoc('insertUnorderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Poin (Bullet List)"><i class="bi bi-list-ul"></i></button>
-                            <button type="button" onclick="formatDoc('insertOrderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Angka (Numbered List)"><i class="bi bi-list-ol"></i></button>
+                                <button type="button" onclick="formatDoc('insertUnorderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Poin (Bullet List)"><i class="bi bi-list-ul"></i></button>
+                                <button type="button" onclick="formatDoc('insertOrderedList')" class="w-8 h-8 flex items-center justify-center rounded hover:bg-white border border-transparent hover:border-natural-base/10 text-sm" title="Daftar Angka (Numbered List)"><i class="bi bi-list-ol"></i></button>
+                            </div>
+
+                            <div id="post-editor" contenteditable="true" class="w-full bg-white border border-natural-base/10 rounded-b-xl px-4 py-3 text-sm focus:outline-none focus:border-natural-blue font-medium min-h-[180px] max-h-[300px] overflow-y-auto prose prose-sm focus:ring-0"></div>
                         </div>
 
-                        <div id="post-editor" contenteditable="true" class="w-full bg-white border border-natural-base/10 rounded-b-xl px-4 py-3 text-sm focus:outline-none focus:border-natural-blue font-medium min-h-[220px] max-h-[400px] overflow-y-auto prose prose-sm focus:ring-0" placeholder="Tuliskan isi artikel secara lengkap disini..."></div>
-                    </div>
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" id="submit-btn" class="flex-grow py-3 bg-natural-base text-white text-sm font-bold rounded-xl hover:bg-natural-blue transition-all shadow-sm">
+                                <i class="bi bi-check-circle mr-1"></i> Simpan Artikel
+                            </button>
+                            <button type="button" id="cancel-btn" class="hidden px-4 py-3 bg-gray-200 text-gray-700 text-sm font-bold rounded-xl hover:bg-gray-300 transition-all">
+                                Batal
+                            </button>
+                        </div>
+                    </form>
+                </section>
 
-                    <div class="flex gap-2 pt-2">
-                        <button type="submit" id="submit-btn" class="flex-grow py-3 bg-natural-base text-white text-sm font-bold rounded-xl hover:bg-natural-blue transition-all shadow-sm">
-                            <i class="bi bi-check-circle mr-1"></i> Simpan Artikel
-                        </button>
-                        <button type="button" id="cancel-btn" class="hidden px-4 py-3 bg-gray-200 text-gray-700 text-sm font-bold rounded-xl hover:bg-gray-300 transition-all">
-                            Batal
-                        </button>
+                <section class="bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-4">
+                    <div class="flex items-center gap-2 border-b border-natural-base/10 pb-3">
+                        <span class="text-lg">👁️</span>
+                        <h3 class="text-base font-extrabold text-natural-base">Pratinjau Artikel (Live Preview)</h3>
                     </div>
-                </form>
-            </section>
+                    <div class="border border-natural-base/10 rounded-2xl overflow-hidden bg-white shadow-sm flex flex-col">
+                        <div class="aspect-video w-full bg-natural-clay relative overflow-hidden">
+                            <img id="preview-live-image" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex items-center justify-between text-xs font-bold">
+                                <span id="preview-live-category" class="text-natural-blue uppercase tracking-wider">KATEGORI</span>
+                                <span id="preview-live-date" class="text-natural-muted font-normal">Belum ditentukan</span>
+                            </div>
+                            <h3 id="preview-live-title" class="text-xl font-bold text-natural-base leading-snug">Judul Artikel Baru</h3>
+                            <div id="preview-live-content" class="text-sm text-natural-muted leading-relaxed line-clamp-4 break-words prose prose-sm">Konten artikel akan muncul di sini secara real-time...</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-            <section class="lg:col-span-7 bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-6">
+            <section class="lg:col-span-6 bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-6">
                 <div>
                     <h2 class="text-xl font-extrabold text-natural-base">Daftar Artikel</h2>
                     <p class="text-xs text-natural-muted mt-1">Daftar seluruh artikel yang tersimpan pada database lokal saat ini.</p>
                 </div>
 
-                <div id="admin-blog-list" class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                <div id="admin-blog-list" class="space-y-4 max-h-[750px] overflow-y-auto pr-2">
                     </div>
             </section>
 
@@ -163,14 +186,12 @@
             localStorage.setItem('agung_blog_posts', JSON.stringify(defaultPosts));
         }
 
-        // DOM Elements
+        // DOM Elements Form
         const blogForm = document.getElementById('blog-form');
         const postIdInput = document.getElementById('post-id');
         const postTitleInput = document.getElementById('post-title');
         const postCategoryInput = document.getElementById('post-category');
         const postDateInput = document.getElementById('post-date');
-        
-        // Target Elemen Editor teks terbaru
         const postEditor = document.getElementById('post-editor');
         
         const postImageFileInput = document.getElementById('post-image-file');
@@ -184,20 +205,60 @@
         const cancelBtn = document.getElementById('cancel-btn');
         const adminBlogList = document.getElementById('admin-blog-list');
 
+        // DOM Elements Live Preview
+        const previewLiveTitle = document.getElementById('preview-live-title');
+        const previewLiveCategory = document.getElementById('preview-live-category');
+        const previewLiveDate = document.getElementById('preview-live-date');
+        const previewLiveContent = document.getElementById('preview-live-content');
+        const previewLiveImage = document.getElementById('preview-live-image');
+
         let currentImageBase64 = "";
 
-        // Fungsi API Pengendali Format Teks Editor (Blogger Style)
-        function formatDoc(cmd, value = null) {
-            document.execCommand(cmd, false, value);
-            postEditor.focus(); // Jaga agar kursor tetap aktif di dalam teks editor
+        // Fungsi Memformat Tanggal ISO (YYYY-MM-DD) ke Teks Bahasa Indonesia (Contoh: 19 Juni 2026)
+        function formatDateToIndonesian(dateString) {
+            if(!dateString) return "Belum ditentukan";
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
         }
 
-        // Logika membaca berkas gambar
+        // Fungsi Sinkronisasi Live Preview Real-time
+        function updateLivePreview() {
+            previewLiveTitle.innerText = postTitleInput.value || "Judul Artikel Baru";
+            previewLiveCategory.innerText = postCategoryInput.value || "KATEGORI";
+            previewLiveDate.innerText = formatDateToIndonesian(postDateInput.value);
+            
+            if(postEditor.innerHTML.trim() === "" || postEditor.innerHTML === "<br>") {
+                previewLiveContent.innerHTML = "Konten artikel akan muncul di sini secara real-time...";
+            } else {
+                previewLiveContent.innerHTML = postEditor.innerHTML;
+            }
+
+            if(currentImageBase64) {
+                previewLiveImage.src = currentImageBase64;
+            } else {
+                previewLiveImage.src = "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500";
+            }
+        }
+
+        // Event Listener untuk memicu perubahan di Live Preview
+        postTitleInput.addEventListener('input', updateLivePreview);
+        postCategoryInput.addEventListener('input', updateLivePreview);
+        postDateInput.addEventListener('change', updateLivePreview);
+        postEditor.addEventListener('input', updateLivePreview);
+
+        // Editor format tombol
+        function formatDoc(cmd, value = null) {
+            document.execCommand(cmd, false, value);
+            postEditor.focus();
+            updateLivePreview();
+        }
+
+        // Upload berkas gambar
         postImageFileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 if (file.size > 2 * 1024 * 1024) {
-                    alert("Ukuran file terlalu besar! Maksimal adalah 2MB agar pas di memori lokal browser.");
+                    alert("Ukuran file terlalu besar! Maksimal adalah 2MB.");
                     this.value = "";
                     return;
                 }
@@ -205,6 +266,7 @@
                 reader.onload = function(event) {
                     currentImageBase64 = event.target.result;
                     showImagePreview(currentImageBase64, file.name);
+                    updateLivePreview();
                 };
                 reader.readAsDataURL(file);
             }
@@ -222,9 +284,10 @@
             uploadLabel.innerText = "Pilih File Gambar";
             imagePreviewContainer.classList.add('hidden');
             imagePreview.src = "";
+            updateLivePreview();
         });
 
-        // Merender list artikel
+        // Render List Artikel Admin
         function renderAdminList() {
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
             adminBlogList.innerHTML = "";
@@ -256,11 +319,10 @@
             });
         }
 
-        // Submit Form (Tambah atau Edit)
+        // Simpan / Kirim Data Form
         blogForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Validasi teks editor agar tidak kosong kosong amat
             if(postEditor.innerHTML.trim() === "" || postEditor.innerHTML === "<br>") {
                 alert("Konten artikel tidak boleh kosong!");
                 return;
@@ -268,16 +330,15 @@
 
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
             const id = postIdInput.value;
+            const formattedDate = formatDateToIndonesian(postDateInput.value);
 
             if (id) {
                 const index = posts.findIndex(p => p.id == id);
                 if (index !== -1) {
                     posts[index].title = postTitleInput.value;
                     posts[index].category = postCategoryInput.value;
-                    posts[index].date = postDateInput.value;
-                    // Simpan markup HTML hasil format editor
+                    posts[index].date = formattedDate;
                     posts[index].content = postEditor.innerHTML;
-                    
                     if (currentImageBase64) {
                         posts[index].image = currentImageBase64;
                     }
@@ -287,8 +348,8 @@
                     id: Date.now(),
                     title: postTitleInput.value,
                     category: postCategoryInput.value,
-                    date: postDateInput.value,
-                    content: postEditor.innerHTML, // Simpan rich text markup HTML
+                    date: formattedDate,
+                    content: postEditor.innerHTML,
                     image: currentImageBase64 || ""
                 };
                 posts.push(newPost);
@@ -300,7 +361,7 @@
             window.dispatchEvent(new Event('storage'));
         });
 
-        // Trigger Masuk Mode Edit Artikel
+        // Edit Post
         window.editPost = function(id) {
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
             const post = posts.find(p => p.id == id);
@@ -310,18 +371,15 @@
                 postIdInput.value = post.id;
                 postTitleInput.value = post.title;
                 postCategoryInput.value = post.category;
-                postDateInput.value = post.date;
                 
-                // Masukkan teks ber-HTML ke editor teks
+                // Catatan: Karena disimpan dalam string teks Indonesia, reset kalender kosong atau set hari ini
+                postDateInput.value = ""; 
+
                 postEditor.innerHTML = post.content;
 
                 if (post.image) {
                     currentImageBase64 = post.image;
-                    if (post.image.startsWith('data:')) {
-                        showImagePreview(post.image, "Gambar Tersimpan (Base64)");
-                    } else {
-                        showImagePreview(post.image, post.image);
-                    }
+                    showImagePreview(post.image, post.image.startsWith('data:') ? "Gambar Tersimpan (Base64)" : post.image);
                 } else {
                     currentImageBase64 = "";
                     imagePreviewContainer.classList.add('hidden');
@@ -331,6 +389,7 @@
                 submitBtn.innerHTML = `<i class="bi bi-save mr-1"></i> Perbarui Artikel`;
                 cancelBtn.classList.remove('hidden');
                 blogForm.scrollIntoView({ behavior: 'smooth' });
+                updateLivePreview();
             }
         };
 
@@ -339,10 +398,7 @@
                 let posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || [];
                 posts = posts.filter(p => p.id != id);
                 localStorage.setItem('agung_blog_posts', JSON.stringify(posts));
-                
-                if (postIdInput.value == id) {
-                    resetForm();
-                }
+                if (postIdInput.value == id) resetForm();
                 renderAdminList();
                 window.dispatchEvent(new Event('storage'));
             }
@@ -352,21 +408,21 @@
             formTitle.innerText = "Buat Artikel Baru";
             postIdInput.value = "";
             blogForm.reset();
-            
-            // Bersihkan teks editor
             postEditor.innerHTML = "";
-            
             currentImageBase64 = "";
             imagePreviewContainer.classList.add('hidden');
             imagePreview.src = "";
             uploadLabel.innerText = "Pilih File Gambar";
-
             submitBtn.innerHTML = `<i class="bi bi-check-circle mr-1"></i> Simpan Artikel`;
             cancelBtn.classList.add('hidden');
+            updateLivePreview();
         }
 
         cancelBtn.addEventListener('click', resetForm);
-        window.onload = renderAdminList;
+        window.onload = function() {
+            renderAdminList();
+            updateLivePreview();
+        };
     </script>
 </body>
 </html>
