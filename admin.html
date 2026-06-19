@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Blog | Agung Fazriansyah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        natural: {
+                            base: '#2C4A3E',
+                            blue: '#4A6B82',
+                            cream: '#FBFBFA',
+                            clay: '#F4F3EF',
+                            muted: '#6B7A74'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-natural-clay/50 text-natural-base font-sans antialiased min-h-screen py-12 px-4">
+
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm gap-4">
+            <div>
+                <h1 class="text-2xl font-extrabold tracking-tight">Panel Utama Blogger Backend</h1>
+                <p class="text-sm text-natural-muted">Kelola tulisan artikel Anda untuk halaman utama portfolio.</p>
+            </div>
+            <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-natural-clay hover:bg-natural-base hover:text-white rounded-xl transition-all">
+                <i class="bi bi-arrow-left"></i> Lihat Website Utama
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7 bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2">
+                    <i class="bi bi-pencil-square text-natural-blue"></i> Buat Postingan Baru
+                </h2>
+                
+                <form id="admin-blog-form" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1">Judul Artikel</label>
+                        <input type="text" id="post-title" required class="w-full px-4 py-2.5 border border-natural-base/20 rounded-xl focus:outline-none focus:border-natural-blue text-sm" placeholder="Masukkan judul...">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1">Kategori / Tag</label>
+                            <input type="text" id="post-category" required class="w-full px-4 py-2.5 border border-natural-base/20 rounded-xl focus:outline-none focus:border-natural-blue text-sm" placeholder="Contoh: AI, Riset, PR">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1">Nama Gambar Cover (Opsional)</label>
+                            <input type="text" id="post-image" class="w-full px-4 py-2.5 border border-natural-base/20 rounded-xl focus:outline-none focus:border-natural-blue text-sm" placeholder="Contoh: gb4.JPG">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-natural-muted mb-1">Isi Konten Artikel</label>
+                        <textarea id="post-content" rows="8" required class="w-full px-4 py-2 border border-natural-base/20 rounded-xl focus:outline-none focus:border-natural-blue text-sm" placeholder="Tulis artikel lengkap di sini..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-natural-base text-white text-sm font-bold rounded-xl hover:bg-natural-blue transition-all shadow-md">
+                        Publikasikan Artikel Ke Website
+                    </button>
+                </form>
+            </div>
+
+            <div class="lg:col-span-5 bg-white p-6 rounded-3xl border border-natural-base/10 shadow-sm flex flex-col h-fit">
+                <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <i class="bi bi-journal-album text-natural-blue"></i> Daftar Tulisan Anda
+                </h2>
+                <div id="admin-posts-list" class="space-y-3 max-h-[460px] overflow-y-auto pr-1">
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const defaultPosts = [
+            {
+                id: 1,
+                title: "Pemanfaatan Artificial Intelligence dalam Dunia Pendidikan Modern",
+                category: "AI & Edukasi",
+                date: "19 Juni 2026",
+                image: "gb4.JPG",
+                content: "Artificial Intelligence (AI) bukan lagi masa depan, melainkan masa kini. Dalam pilar pendidikan, machine learning membantu dosen mendeteksi preferensi belajar mahasiswa, mengotomatisasi penilaian, dan memberikan materi yang dipersonalisasi. Implementasi AI yang tepat dapat melahirkan ekosistem belajar yang adaptif dan inklusif."
+            },
+            {
+                id: 2,
+                title: "Strategi Public Relations Mengoptimalkan Citra Perguruan Tinggi",
+                category: "Public Relations",
+                date: "10 Mei 2026",
+                image: "gb9.JPG",
+                content: "Membangun kepercayaan publik di era digital menuntut PR untuk adaptif mengolah data tren media sosial. Menggabungkan teknik digital marketing communication dengan konten edukasi organik terbukti meningkatkan conversion rate penerimaan mahasiswa baru secara signifikan."
+            }
+        ];
+
+        let posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || defaultPosts;
+
+        function getFormattedDate() {
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const d = new Date();
+            return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+        }
+
+        function renderAdminPanel() {
+            const listContainer = document.getElementById('admin-posts-list');
+            listContainer.innerHTML = "";
+
+            if(posts.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-natural-muted py-4 text-center">Belum ada tulisan artikel.</p>`;
+                return;
+            }
+
+            posts.forEach(post => {
+                const item = document.createElement('div');
+                item.className = "p-3 bg-natural-clay/60 border border-natural-base/5 rounded-xl space-y-2";
+                item.innerHTML = `
+                    <div class="flex justify-between items-start gap-2">
+                        <span class="font-bold text-xs line-clamp-2 text-natural-base">${post.title}</span>
+                        <button onclick="deletePost(${post.id})" class="text-[11px] font-bold bg-red-50 text-red-600 hover:bg-red-600 hover:text-white px-2 py-1 rounded-md transition-all">
+                            Hapus
+                        </button>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-natural-muted">
+                        <span>Tag: ${post.category}</span>
+                        <span>${post.date}</span>
+                    </div>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        document.getElementById('admin-blog-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('post-title').value;
+            const category = document.getElementById('post-category').value;
+            const image = document.getElementById('post-image').value;
+            const content = document.getElementById('post-content').value;
+
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                date: getFormattedDate(),
+                image: image,
+                content: content
+            };
+
+            posts.unshift(newPost);
+            localStorage.setItem('agung_blog_posts', JSON.stringify(posts));
+            
+            document.getElementById('admin-blog-form').reset();
+            renderAdminPanel();
+            alert("Artikel berhasil diterbitkan ke halaman depan!");
+        });
+
+        function deletePost(id) {
+            if(confirm("Hapus artikel ini secara permanen dari website?")) {
+                posts = posts.filter(post => post.id !== id);
+                localStorage.setItem('agung_blog_posts', JSON.stringify(posts));
+                renderAdminPanel();
+            }
+        }
+
+        window.onload = renderAdminPanel;
+    </script>
+</body>
+</html>
