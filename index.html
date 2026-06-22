@@ -61,19 +61,19 @@
                 <a href="#contact" class="ml-2 px-5 py-2.5 bg-natural-base text-white rounded-xl hover:bg-natural-blue transition-all shadow-sm">Contact</a>
             </div>
 
-            <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-natural-base border border-natural-base/10 rounded-xl bg-natural-clay/30">
-                <i id="menu-icon" class="bi bi-list text-xl"></i>
+            <button id="menu-toggle" class="lg:hidden w-11 h-11 flex items-center justify-center text-natural-base border border-natural-base/10 rounded-xl bg-natural-clay/30 active:bg-natural-clay/70 cursor-pointer select-none" style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                <i id="menu-icon" class="bi bi-list text-2xl"></i>
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-natural-base/10 px-6 py-4 space-y-2 font-semibold text-sm text-natural-muted">
-            <a href="#home" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">Home</a>
-            <a href="#about" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">About</a>
-            <a href="#gallery" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">Gallery</a>
-            <a href="#blog" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">Blog</a>
-            <a href="#research" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">Research</a>
-            <a href="#skills" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base transition-all">Skills</a>
-            <a href="#contact" class="mobile-link block p-3 bg-natural-base text-white text-center rounded-xl hover:bg-natural-blue transition-all mt-4">Contact</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-natural-base/10 px-6 py-4 space-y-1 font-semibold text-sm text-natural-muted shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto">
+            <a href="#home" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">Home</a>
+            <a href="#about" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">About</a>
+            <a href="#gallery" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">Gallery</a>
+            <a href="#blog" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">Blog</a>
+            <a href="#research" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">Research</a>
+            <a href="#skills" class="mobile-link block p-3 rounded-xl hover:bg-natural-clay/50 hover:text-natural-base active:bg-natural-clay transition-all" style="touch-action: manipulation;">Skills</a>
+            <a href="#contact" class="mobile-link block p-3 bg-natural-base text-white text-center rounded-xl hover:bg-natural-blue active:bg-natural-blue transition-all mt-3" style="touch-action: manipulation;">Contact</a>
         </div>
     </nav>
 
@@ -130,7 +130,7 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 px-6 bg-natural-cream-scroll-mt-12">
+    <section id="about" class="py-24 px-6 bg-natural-cream scroll-mt-12">
         <div class="container mx-auto max-w-5xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-extrabold tracking-tight text-natural-base inline-block relative">
@@ -307,7 +307,7 @@
             </div>
 
             <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                </div>
+            </div>
         </div>
     </section>
 
@@ -438,27 +438,38 @@
     </footer>
 
     <script>
-        // Logika Pengendali Hamburger Menu Navigasi Mobile
+        // Perbaikan Pengendali Menu Navigasi Mobile agar Kompatibel Sempurna dengan Android & iOS Touch Event
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        if (menuToggle && mobileMenu && menuIcon) {
-            menuToggle.addEventListener('click', () => {
+        function toggleMobileNavbar(e) {
+            if (e) e.preventDefault(); // Mencegah ghost click / double click pada perangkat mobile
+            if (mobileMenu && menuIcon) {
                 mobileMenu.classList.toggle('hidden');
                 const isOpen = !mobileMenu.classList.contains('hidden');
-                menuIcon.className = isOpen ? "bi bi-x-lg text-xl" : "bi bi-list text-xl";
-            });
-
-            // Tutup otomatis menu dropdown saat salah satu link diklik
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.className = "bi bi-list text-xl";
-                });
-            });
+                menuIcon.className = isOpen ? "bi bi-x-lg text-2xl" : "bi bi-list text-2xl";
+            }
         }
+
+        if (menuToggle) {
+            // Menggunakan kombinasi touchend dan click untuk menjamin responsivitas kilat di iOS/Android
+            menuToggle.addEventListener('touchend', toggleMobileNavbar, { passive: false });
+            menuToggle.addEventListener('click', toggleMobileNavbar);
+        }
+
+        // Tutup otomatis menu dropdown saat salah satu tautan jangkar diklik
+        mobileLinks.forEach(link => {
+            function closeNavbar() {
+                if (mobileMenu && menuIcon) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.className = "bi bi-list text-2xl";
+                }
+            }
+            link.addEventListener('touchend', closeNavbar, { passive: true });
+            link.addEventListener('click', closeNavbar);
+        });
 
         // Logika Pengendali Slider Gallery
         const slider = document.getElementById('gallery-slider');
@@ -506,6 +517,7 @@
 
         function renderFrontendBlog() {
             const container = document.getElementById('blog-container');
+            if(!container) return;
             const posts = JSON.parse(localStorage.getItem('agung_blog_posts')) || defaultPosts;
             
             container.innerHTML = "";
