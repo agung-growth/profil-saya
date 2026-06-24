@@ -197,28 +197,23 @@
     </div>
 
     <script>
-        // HASH KREDENSIAL YANG SUDAH DIPERBAIKI SECARA AKURAT
-        const TARGET_U_HASH = "8b965f9bfdcbf4fa2c6d480ee2e652bf335804595d28b17c87fb56bc8b3d63bd"; 
-        const TARGET_P_HASH = "12d1b714571d4b68e7ec89fcfda7888b64e526a6be3f03b22cf94814d6934c51";
+        // PENYAMARAN DATA KREDENSIAL DENGAN ENKODE BASE64 (SANGAT STABIL & AKURAT)
+        const TARGET_U_ENCODED = "YWd1bmdmenI="; // Hasil encode dari "agungfzr"
+        const TARGET_P_ENCODED = "ZGFobGlhMTM="; // Hasil encode dari "dahlia13"
 
-        async function sha256(string) {
-            const utf8 = new TextEncoder().encode(string);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(bytes => bytes.toString(16).padStart(2, '0')).join('');
-        }
-
-        async function handleLogin(event) {
+        function handleLogin(event) {
             event.preventDefault();
-            // Menambahkan .trim() untuk meminimalisir kesalahan spasi tak sengaja saat mengetik
+            
+            // Mengambil input dan membersihkan spasi tak sengaja (.trim)
             const uInput = document.getElementById('login-username').value.trim();
             const pInput = document.getElementById('login-password').value.trim();
             const errorDiv = document.getElementById('login-error');
 
-            const uHash = await sha256(uInput);
-            const pHash = await sha256(pInput);
+            // Mengonversi teks input menjadi enkode pembanding
+            const uEncoded = btoa(uInput);
+            const pEncoded = btoa(pInput);
 
-            if (uHash === TARGET_U_HASH && pHash === TARGET_P_HASH) {
+            if (uEncoded === TARGET_U_ENCODED && pEncoded === TARGET_P_ENCODED) {
                 sessionStorage.setItem('isAdminAuthenticated', 'true');
                 errorDiv.classList.add('hidden');
                 showDashboard();
